@@ -26,6 +26,11 @@ function App() {
     setTerm(task);
   }
 
+  const handleDelete = (taskId: number) =>{
+    const newTodoList = todoList.filter(todo => todo.id !== taskId);
+    setTodoList(newTodoList);
+  }
+
   useEffect(() => {
     console.log("<App/> rendering...");
 
@@ -45,7 +50,7 @@ function App() {
       />
       <button onClick={handleCreate}>Create</button>
       <button onClick={handleSearch}>Search</button>
-      <List todoList={filteredTodoList} />
+      <List todoList={filteredTodoList} handleDelete={handleDelete} />
     </>
   )
 }

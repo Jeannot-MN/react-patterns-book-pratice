@@ -8,18 +8,19 @@ type Todo = {
 
 interface Props {
     todoList: Todo[]
+    handleDelete: (taskId: number) => void;
 }
 
-const List: FC<Props> = ({ todoList }) => {
+const List: FC<Props> = ({ todoList, handleDelete }) => {
 
     useEffect(() => {
-        // console.log("<List/> rendering...");
+        console.log("<List/> rendering...");
     });
 
     return (
         <ul>
             {todoList.map(todo => (
-                <Task key={todo.id} {...todo} />
+                <Task key={todo.id} handleDelete={handleDelete} {...todo} />
             ))}
         </ul>
     )
