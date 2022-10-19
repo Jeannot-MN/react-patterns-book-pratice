@@ -6,9 +6,9 @@ interface Props {
 }
 
 const Task: FC<Props> = ({task}) => {
-    
+
     useEffect(() => {
-        console.log("Task rendering...");
+        console.log(`<Task/> ${task} rendering...`);
     });
 
     return (
