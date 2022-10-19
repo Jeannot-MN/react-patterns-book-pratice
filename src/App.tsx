@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import List from './List';
 
 
@@ -10,8 +10,9 @@ const initialTodos = [
 function App() {
   const [todoList, setTodoList] = useState(initialTodos);
   const [task, setTask] = useState('');
-  
-  const handleCreate = () =>{
+  const [term, setTerm] = useState('');
+
+  const handleCreate = () => {
     const newTodo = {
       id: Date.now(),
       task,
@@ -21,10 +22,19 @@ function App() {
     setTask('');
   }
 
-  useEffect(()=>{
+  const handleSearch = () => {
+    setTerm(task);
+  }
+
+  useEffect(() => {
     console.log("<App/> rendering...");
-    
+
   });
+
+  const filteredTodoList = useMemo(() => todoList.filter(todo => {
+    console.log("Filtering...");
+    return todo.task.toLocaleLowerCase().includes(term.toLocaleLowerCase());
+  }), [term, todoList]);
 
   return (
     <>
@@ -34,7 +44,8 @@ function App() {
         onChange={(e) => setTask(e.target.value)}
       />
       <button onClick={handleCreate}>Create</button>
-      <List todoList={todoList} />
+      <button onClick={handleSearch}>Search</button>
+      <List todoList={filteredTodoList} />
     </>
   )
 }

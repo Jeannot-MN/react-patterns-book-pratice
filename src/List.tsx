@@ -13,7 +13,7 @@ interface Props {
 const List: FC<Props> = ({ todoList }) => {
 
     useEffect(() => {
-        console.log("<List/> rendering...");
+        // console.log("<List/> rendering...");
     });
 
     return (
