@@ -1,9 +1,13 @@
+import GeolocationContainer from './geolocation/GeolocationContainer';
 import Notes from './notes/Notes';
 
 function App() {
 
   return (
-    <Notes/>
+    <>
+      <GeolocationContainer />
+      <Notes />
+    </>
   )
 }
 
