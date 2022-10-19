@@ -22,7 +22,7 @@ function App() {
   }
 
   useEffect(()=>{
-    console.log("App rendering...");
+    console.log("<App/> rendering...");
     
   });
 
