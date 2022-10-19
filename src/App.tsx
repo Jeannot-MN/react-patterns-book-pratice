@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import List from './List';
 
 
@@ -26,10 +26,11 @@ function App() {
     setTerm(task);
   }
 
-  const handleDelete = (taskId: number) =>{
+  const handleDelete = useCallback((taskId: number) => {
     const newTodoList = todoList.filter(todo => todo.id !== taskId);
     setTodoList(newTodoList);
-  }
+  },[todoList]);
+
 
   useEffect(() => {
     console.log("<App/> rendering...");
