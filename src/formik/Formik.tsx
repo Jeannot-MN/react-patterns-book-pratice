@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function Formik() {
 
     const [values, setValues] = useState({})
+
+    const inputRef = useRef(null);
 
     const handleChange = ({ target: { name, value } }: any) => {
         setValues({
@@ -13,6 +15,8 @@ export default function Formik() {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
+        //@ts-ignore
+        inputRef.current.focus();
         console.log(values);
 
     }
@@ -22,6 +26,7 @@ export default function Formik() {
             <input
                 type="text"
                 name="name"
+                ref={inputRef}
             // onChange={handleChange}
             />
             <input
