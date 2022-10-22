@@ -6,7 +6,6 @@ interface Props {
 }
 
 const Geolocation: FC<Props> = ({ latitude, longitude }) => {
-
     return (
         <div>
             <h1>Geolocation:</h1>
